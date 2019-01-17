@@ -32,7 +32,7 @@ def man():
     commands = {
         "man": "Show the help page",
         "help": "Same as 'man' command",
-        "check --(url) ": "Pinging and testing server. Takes url as an optional argument",
+        "check --url (url) ": "Pinging and testing server. Takes url as an optional argument",
         "os": "Shows info about the current os",
         "version, -v": "Shows version of the cli",
         "free mem": "Shows available memory on the system",
