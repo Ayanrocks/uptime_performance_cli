@@ -10,8 +10,9 @@ class CLI:
 
     '''
 
-    accepted_commands = ['man', 'help', 'check', "os", "version", "-v"
+    accepted_commands = ['man', 'help', 'check', "os", "version", "-v", "clear",
                          "list_logs", "more_log_info", "exit", 'free_mem', 'cpu_info', 'get_id']
+    logs = 1
 
     def __init__(self):
         os.system("clear")
@@ -20,13 +21,15 @@ class CLI:
 
     def start(self):
         while(1):
-
-            self.cmd = input("> ")
-            if(self.command_validate()):
-                self.emit_command()
-            else:
-                print(
-                    "Invalid Command. Try 'man' or 'help' for list of available commands")
+            try:
+                self.cmd = input("> ")
+                if(self.command_validate()):
+                    self.emit_command()
+                else:
+                    print(
+                        "Invalid Command. Try 'man' or 'help' for list of available commands")
+            except KeyError:
+                self.start()
 
     def command_validate(self):
         cmd = self.cmd.split(" ")
@@ -39,6 +42,7 @@ class CLI:
             "man": self.man,
             "help": self.man,
             "check": self.check,
+            "clear": self.clear,
             "os": self.os,
             "version": self.version,
             "-v": self.version,
@@ -57,7 +61,11 @@ class CLI:
         cli.man()
 
     def check(self):
-        cli.check(self.cmd)
+        cli.check(self.cmd, CLI.logs)
+
+    def clear(self):
+        os.system("clear")
+        print("Starting CLI in " + pm.platform())
 
     def mem(self):
         print("mem")

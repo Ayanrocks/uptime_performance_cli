@@ -32,14 +32,15 @@ def man():
     commands = {
         "man": "Show the help page",
         "help": "Same as 'man' command",
-        "check --url (url) ": "Pinging and testing server. Takes url as an optional argument",
+        "clear": "Clears the cli",
+        "check --url, --u (url) --packets, --p (packets)": "Pinging and testing server. Takes url as an optional argument",
         "os": "Shows info about the current os",
         "version, -v": "Shows version of the cli",
-        "free mem": "Shows available memory on the system",
-        "cpu info": "Shows info about the cpu",
-        "get id": "Shows the process id of the current process",
-        "list logs": "shows available logs",
-        "more log info --(id)": "Show details of a specified log file",
+        "free_mem": "Shows available memory on the system",
+        "cpu_info": "Shows info about the cpu",
+        "get_id": "Shows the process id of the current process",
+        "list_logs": "shows available logs",
+        "more_log_info --(id)": "Show details of a specified log file",
         "exit": "Kills the cli"
     }
 
@@ -51,10 +52,12 @@ def man():
     for key, val in commands.items():
         value = "\033[92m" + val + "\033[0m"
         line = "\033[94m" + key + "\033[0m"
-        padding = 40 - len(line)
+        padding = 50 - len(line)
+        val = val[:40] + "\n" + (" " * padding) + val[40:]
         while(padding):
             line += " "
             padding -= 1
+
         line += value
         print(line)
         vertical_space()
