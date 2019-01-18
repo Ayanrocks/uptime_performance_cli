@@ -1,14 +1,24 @@
 import os
+import shutil
 import math
 
 
 def horizontal_line():
-    width = os.get_terminal_size()[0]
-    line = ""
-    while(width):
-        line += "-"
-        width -= 1
-    print(line)
+    try:
+
+        width = os.get_terminal_size()[0]
+        line = ""
+        while(width):
+            line += "-"
+            width -= 1
+        print(line)
+    except:
+        width = shutil.get_terminal_size()[0]
+        line = ""
+        while(width):
+            line += "-"
+            width -= 1
+        print(line)
 
 
 def centered(str):
@@ -52,7 +62,7 @@ def man():
     for key, val in commands.items():
         value = "\033[92m" + val + "\033[0m"
         line = "\033[94m" + key + "\033[0m"
-        padding = 50 - len(line)
+        padding = 60 - len(line)
         val = val[:40] + "\n" + (" " * padding) + val[40:]
         while(padding):
             line += " "

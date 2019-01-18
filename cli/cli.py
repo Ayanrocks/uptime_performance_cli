@@ -12,7 +12,6 @@ class CLI:
 
     accepted_commands = ['man', 'help', 'check', "os", "version", "-v", "clear",
                          "list_logs", "more_log_info", "exit", 'free_mem', 'cpu_info', 'get_id']
-    logs = 1
 
     def __init__(self):
         os.system("clear")
@@ -33,8 +32,9 @@ class CLI:
 
     def command_validate(self):
         cmd = self.cmd.split(" ")
+
         for i in CLI.accepted_commands:
-            if cmd[0] in i:
+            if cmd[0] == i:
                 return True
 
     def emit_command(self):
@@ -61,7 +61,7 @@ class CLI:
         cli.man()
 
     def check(self):
-        cli.check(self.cmd, CLI.logs)
+        cli.check(self.cmd)
 
     def clear(self):
         os.system("clear")
