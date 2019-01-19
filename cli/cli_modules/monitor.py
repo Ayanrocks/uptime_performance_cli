@@ -67,6 +67,8 @@ def ping(url, packets):
             file_path = os.path.join(curr_dir, file_name)
             try:
                 fs = open(file_path, "w+")
+                res = res.strip("b'")
+                res = res.strip("'")
                 print("Wrote: " + str(fs.write(res)))
                 print("Log Created at: " + file_path)
                 fs.close()
@@ -92,14 +94,18 @@ def monitor(cmd):
         if cmd_split[1][:3] != "url" or cmd_split[1][:1] != "u":
             print("Invalid Flags. Use --u or --url")
             get_url_packets()
-        args = cmd_split[1].split(" ")[1]
-        try:
-            packets = cmd_split[2].split(" ")[1]
-            validate(args, packets)
+        else:
+            args = cmd_split[1].split(" ")[1]
+            try:
+                packets = cmd_split[2].split(" ")[1]
+                validate(args, packets)
 
-        except IndexError:
-            validate(args)
+            except IndexError:
+                validate(args)
     except IndexError:
-        get_url_packets()
+        try:
+            get_url_packets()
+        except:
+            pass
 
     return True

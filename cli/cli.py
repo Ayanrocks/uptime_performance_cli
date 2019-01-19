@@ -6,7 +6,7 @@ from . import cli_modules as cli
 
 class CLI:
     '''
-    A python CLI too for performance metrics and network pinging
+    A python CLI for performance metrics and network pinging
 
     '''
 
@@ -48,8 +48,8 @@ class CLI:
             "-v": self.version,
             "list_logs": self.list_logs,
             "more_log_info": self.log_info,
-            "free_mem": self.mem,
-            "cpu_info": self.cpu_info,
+            "mem": self.mem,
+            "cpu": self.cpu_info,
             "get_id": self.get_id,
             "exit": self.exit
 
@@ -68,7 +68,7 @@ class CLI:
         print("Starting CLI in " + pm.platform())
 
     def mem(self):
-        print("mem")
+        cli.mem_info()
 
     def cpu_info(self):
         print("os info")
