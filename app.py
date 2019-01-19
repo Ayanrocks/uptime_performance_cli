@@ -3,11 +3,16 @@
 
 import cli
 import time
+import argparse
+import sys
 
 
-def start():
+def start(cmd=""):
     try:
-        obj = cli.CLI()
+        if cmd != "":
+            obj = cli.CLI(cmd)
+        else:
+            obj = cli.CLI()
 
     except KeyboardInterrupt:
         print(" Exiting ")
@@ -21,7 +26,15 @@ def start():
 
 def main():
     try:
-        start()
+        if len(sys.argv) == 2:
+            cmd = sys.argv[1]
+            start(cmd)
+        elif len(sys.argv) > 2:
+            print("Invalid argument. Starting cli...")
+            time.sleep(.5)
+            start()
+        else:
+            start()
     except Exception:
 
         print("Some Error Occured. Restarting Terminal...")

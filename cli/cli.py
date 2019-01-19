@@ -14,11 +14,23 @@ class CLI:
     accepted_commands = ['man', 'help', 'check', "os", "version", "-v", "clear",
                          "list_logs", "more_log_info", "exit", 'mem', 'cpu', 'get_id']
 
-    def __init__(self):
-        os.system("clear")
+    def __init__(self, cmd=""):
+        if pm.system == "Windows":
+            os.system("cls")
+
+        elif pm.system == "Linux":
+            os.system("clear")
+
+        else:
+            os.system("clear")
+
         print("Starting CLI in " + pm.platform())
+
         if sys.version[0] == "3":
-            self.start()
+            if cmd != "":
+                self.start(cmd)
+            else:
+                self.start()
         else:
             print("Python " + sys.version[:5] +
                   " detected. Please Use python 3.5 and above")
@@ -26,15 +38,27 @@ class CLI:
             time.sleep(2)
             exit(0)
 
-    def start(self):
+    def start(self, cmd=""):
         while(1):
             try:
-                self.cmd = input("> ")
-                if(self.command_validate()):
-                    self.emit_command()
+                if cmd != "":
+                    self.cmd = cmd
+                    if(self.command_validate()):
+                        self.emit_command()
+                        cmd = ""
+                    else:
+                        print(
+                            "Invalid Argument. Try 'man' or 'help' for list of available commands")
+                        cmd = ""
+
                 else:
-                    print(
-                        "Invalid Command. Try 'man' or 'help' for list of available commands")
+                    self.cmd = input("> ")
+                    if(self.command_validate()):
+                        self.emit_command()
+                    else:
+                        print(
+                            "Invalid Command. Try 'man' or 'help' for list of available commands")
+
             except KeyError:
                 self.start()
 
@@ -42,6 +66,7 @@ class CLI:
         cmd = self.cmd.split(" ")
 
         for i in CLI.accepted_commands:
+
             if cmd[0] == i:
                 return True
 
@@ -72,7 +97,15 @@ class CLI:
         cli.check(self.cmd)
 
     def clear(self):
-        os.system("clear")
+        if pm.system == "Windows":
+            os.system("cls")
+
+        elif pm.system == "Linux":
+            os.system("clear")
+
+        else:
+            os.system("clear")
+
         print("Starting CLI in " + pm.platform())
 
     def mem(self):

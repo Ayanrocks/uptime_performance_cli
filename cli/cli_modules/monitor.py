@@ -3,6 +3,7 @@ import os
 import subprocess
 import time
 import datetime
+import platform as pm
 
 
 def get_url_packets():
@@ -41,8 +42,18 @@ def ping(url, packets):
     try:
         print("Waiting  for response")
         print("Pinging " + url + " ...")
-        res = subprocess.check_output(
-            "ping -c " + str(packets) + " " + url, shell=True)
+
+        if pm.system == "Windows":
+            res = subprocess.check_output(
+                "ping -n " + str(packets) + " " + url, shell=True)
+
+        elif pm.system == "Linux":
+            res = subprocess.check_output(
+                "ping -c " + str(packets) + " " + url, shell=True)
+
+        else:
+            res = subprocess.check_output(
+                "ping -c " + str(packets) + " " + url, shell=True)
 
         res = str(res)
         res_split = res.split("ping")[1].split("\\n")
