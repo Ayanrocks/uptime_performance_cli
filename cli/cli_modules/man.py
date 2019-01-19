@@ -26,7 +26,7 @@ def man():
         value = "\033[92m" + val + "\033[0m"
         line = "\033[94m" + key + "\033[0m"
         padding = 60 - len(line)
-        val = val[:40] + "\n" + (" " * padding) + val[40:]
+        val = val[:40] + "\n" + (" " * padding) + val[41:]
         while(padding):
             line += " "
             padding -= 1

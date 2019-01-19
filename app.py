@@ -22,9 +22,9 @@ def start():
 def main():
     try:
         start()
-    except Exception as e:
+    except Exception:
 
-        print("Some Error Occured. Restarting Terminal")
+        print("Some Error Occured. Restarting Terminal...")
         time.sleep(2)
         main()
 

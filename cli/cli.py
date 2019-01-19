@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 import platform as pm
 from . import cli_modules as cli
 
@@ -11,12 +12,19 @@ class CLI:
     '''
 
     accepted_commands = ['man', 'help', 'check', "os", "version", "-v", "clear",
-                         "list_logs", "more_log_info", "exit", 'free_mem', 'cpu_info', 'get_id']
+                         "list_logs", "more_log_info", "exit", 'mem', 'cpu', 'get_id']
 
     def __init__(self):
         os.system("clear")
         print("Starting CLI in " + pm.platform())
-        self.start()
+        if sys.version[0] == "3":
+            self.start()
+        else:
+            print("Python " + sys.version[:5] +
+                  " detected. Please Use python 3.5 and above")
+            print("Exiting...")
+            time.sleep(2)
+            exit(0)
 
     def start(self):
         while(1):
