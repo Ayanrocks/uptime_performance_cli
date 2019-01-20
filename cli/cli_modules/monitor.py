@@ -43,11 +43,11 @@ def ping(url, packets):
         print("Waiting  for response")
         print("Pinging " + url + " ...")
 
-        if pm.system == "Windows":
+        if pm.system() == "Windows":
             res = subprocess.check_output(
                 "ping -n " + str(packets) + " " + url, shell=True)
 
-        elif pm.system == "Linux":
+        elif pm.system() == "Linux":
             res = subprocess.check_output(
                 "ping -c " + str(packets) + " " + url, shell=True)
 

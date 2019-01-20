@@ -21,10 +21,10 @@ class CLI:
                          "list_logs", "more_log_info", "exit", 'mem', 'cpu', 'get_id']
 
     def __init__(self, cmd=""):
-        if pm.system == "Windows":
+        if pm.system() == "Windows":
             os.system("cls")
 
-        elif pm.system == "Linux":
+        elif pm.system() == "Linux":
             os.system("clear")
 
         else:
@@ -104,10 +104,10 @@ class CLI:
         cli.check(self.cmd)
 
     def clear(self):
-        if pm.system == "Windows":
+        if pm.system() == "Windows":
             os.system("cls")
 
-        elif pm.system == "Linux":
+        elif pm.system() == "Linux":
             os.system("clear")
 
         else:
