@@ -45,24 +45,21 @@ def ping(url, packets):
 
         if pm.system() == "Windows":
             res = subprocess.check_output(
-                "ping -n " + str(packets) + " " + url, shell=True)
-            res = str(res)
-            res_split = res.split("Ping ")[1].split("\\n")
+                "ping -n " + str(packets) + " " + url, shell=True).decode("utf-8")
+            res_split = res.split("Ping ").split("\n")
 
         elif pm.system() == "Linux":
             res = subprocess.check_output(
-                "ping -c " + str(packets) + " " + url, shell=True)
-            res = str(res)
-            res_split = res.split("ping")[1].split("\\n")
+                "ping -c " + str(packets) + " " + url, shell=True).decode("utf-8")
+            res_split = res.split("ping")[1].split("\n")
 
         else:
             res = subprocess.check_output(
-                "ping -c " + str(packets) + " " + url, shell=True)
-            res = str(res)
-            res_split = res.split("ping")[1].split("\\n")
+                "ping -c " + str(packets) + " " + url, shell=True).decode("utf-8")
+            res_split = res.split("ping").split("\n")
 
         print("\n")
-        print("Ping" + res_split[0])
+        print("Ping " + res_split[0].replace(" ", ""))
         print("\n")
 
         print("Transmission Statistics \n " + res_split[1])
