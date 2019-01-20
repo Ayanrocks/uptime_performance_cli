@@ -78,7 +78,7 @@ def ping(url, packets):
             if not os.path.exists(curr_dir):
                 os.makedirs(curr_dir)
             file_name = datetime.datetime.now().strftime(
-                "%d-%m-%y:%H%M%S") + ".log"
+                "%d-%m-%y--%H%M%S") + ".log"
             file_path = os.path.join(curr_dir, file_name)
             try:
                 fs = open(file_path, "w+")
