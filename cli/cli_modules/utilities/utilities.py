@@ -1,8 +1,13 @@
+# Utilities file
+
+# Dependencies
+
 import os
 import shutil
 import math
 
 
+# Exports
 def horizontal_line():
     try:
 
@@ -36,3 +41,7 @@ def vertical_space(n=1):
     while(n):
         print("")
         n -= 1
+
+
+def colored_string(str, color):
+    pass

@@ -1,8 +1,14 @@
+# Main CLI class
+
+# Dependencies
+
 import os
 import sys
 import time
 import platform as pm
 from . import cli_modules as cli
+
+# Export Class CLI
 
 
 class CLI:
@@ -64,7 +70,8 @@ class CLI:
 
     def command_validate(self):
         cmd = self.cmd.split(" ")
-
+        if cmd[0] == "":
+            return True
         for i in CLI.accepted_commands:
 
             if cmd[0] == i:
@@ -112,7 +119,7 @@ class CLI:
         cli.mem_info()
 
     def cpu_info(self):
-        print("os info")
+        cli.cpu_info()
 
     def get_id(self):
         print("get id")

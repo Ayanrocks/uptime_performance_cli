@@ -1,4 +1,10 @@
+# Manual/ Help File
+
+# Dependencies
+
 from .utilities import utilities as util
+
+# Manual Dunction to export
 
 
 def man():
