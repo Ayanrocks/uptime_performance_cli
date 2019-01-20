@@ -46,17 +46,21 @@ def ping(url, packets):
         if pm.system() == "Windows":
             res = subprocess.check_output(
                 "ping -n " + str(packets) + " " + url, shell=True)
+            res = str(res)
+            res_split = res.split("Ping ")[1].split("\\n")
 
         elif pm.system() == "Linux":
             res = subprocess.check_output(
                 "ping -c " + str(packets) + " " + url, shell=True)
+            res = str(res)
+            res_split = res.split("ping")[1].split("\\n")
 
         else:
             res = subprocess.check_output(
                 "ping -c " + str(packets) + " " + url, shell=True)
+            res = str(res)
+            res_split = res.split("ping")[1].split("\\n")
 
-        res = str(res)
-        res_split = res.split("ping")[1].split("\\n")
         print("\n")
         print("Ping" + res_split[0])
         print("\n")
