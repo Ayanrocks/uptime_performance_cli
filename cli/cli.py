@@ -58,6 +58,7 @@ class CLI:
                         cmd = ""
 
                 else:
+                    print("")
                     self.cmd = input("> ")
                     if(self.command_validate()):
                         self.emit_command()
