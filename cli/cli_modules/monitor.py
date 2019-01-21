@@ -38,7 +38,7 @@ def validate(url, packets=4):
 
 
 def ping(url, packets):
-
+    # @TODO Fix Ping in windows
     try:
         print("Waiting  for response")
         print("Pinging " + url + " ...")
@@ -47,9 +47,8 @@ def ping(url, packets):
             print("Windows")
             res = subprocess.check_output(
                 "ping -n " + str(packets) + " " + url, shell=True).decode("utf-8")
-            print(res)
-            res_split = res.split("Ping ").split("\n")
-            print(res_split)
+            res_split = res.split("Ping ")[1].split('\r\n')
+            res_split[2].join(res_split[3])
 
         elif pm.system() == "Linux":
             res = subprocess.check_output(
@@ -59,7 +58,7 @@ def ping(url, packets):
         else:
             res = subprocess.check_output(
                 "ping -c " + str(packets) + " " + url, shell=True).decode("utf-8")
-            res_split = res.split("ping").split("\n")
+            res_split = res.split("ping")[1].split("\n")
 
         print("\n")
         print("Ping " + res_split[0].replace(" ", ""))
