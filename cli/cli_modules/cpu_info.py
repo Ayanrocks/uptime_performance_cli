@@ -58,6 +58,7 @@ def display_linux():
           str(round(cpu_times[2] / 60, 2)) + " mins")
     print(ut.colored_string("On Idle: ", 91) +
           str(round(cpu_times[3] / 60, 2)) + " mins")
+
     print("\n")
 
 
