@@ -2,7 +2,6 @@
 
 # Dependencies
 
-import curses
 import sys
 import time
 import psutil
