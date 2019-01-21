@@ -39,6 +39,7 @@ def main():
 
         print("Some Error Occured. Restarting Terminal...")
         time.sleep(2)
+        sys.argv = []
         main()
 
 

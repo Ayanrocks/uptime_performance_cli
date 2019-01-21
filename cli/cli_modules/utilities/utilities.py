@@ -43,5 +43,6 @@ def vertical_space(n=1):
         n -= 1
 
 
-def colored_string(str, color):
-    pass
+def colored_string(string, color):
+    new_str = "\033[" + str(color) + "m" + string + "\033[0m"
+    return new_str
