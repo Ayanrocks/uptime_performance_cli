@@ -44,9 +44,12 @@ def ping(url, packets):
         print("Pinging " + url + " ...")
 
         if pm.system() == "Windows":
+            print("Windows")
             res = subprocess.check_output(
                 "ping -n " + str(packets) + " " + url, shell=True).decode("utf-8")
+            print(res)
             res_split = res.split("Ping ").split("\n")
+            print(res_split)
 
         elif pm.system() == "Linux":
             res = subprocess.check_output(
@@ -101,12 +104,8 @@ def ping(url, packets):
 
 def monitor(cmd):
     cmd_split = cmd.split("--")
-
     try:
-        if cmd_split[1][:3] != "url" or cmd_split[1][:1] != "u":
-            print("Invalid Flags. Use --u or --url")
-            get_url_packets()
-        else:
+        if (cmd_split[1][:4] == "url ") :
             args = cmd_split[1].split(" ")[1]
             try:
                 packets = cmd_split[2].split(" ")[1]
@@ -114,6 +113,18 @@ def monitor(cmd):
 
             except IndexError:
                 validate(args)
+        elif (cmd_split[1][:2] == "u "):
+            args = cmd_split[1].split(" ")[1]
+            try:
+                packets = cmd_split[2].split(" ")[1]
+                validate(args, packets)
+
+            except IndexError:
+                validate(args)
+        else:
+            print("Invalid Flags. Use --u or --url")
+            get_url_packets()
+            
     except IndexError:
         try:
             get_url_packets()
