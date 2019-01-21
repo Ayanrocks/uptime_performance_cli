@@ -17,7 +17,7 @@ class CLI:
 
     '''
 
-    accepted_commands = ['man', 'help', 'check', "os", "version", "-v", "clear",
+    accepted_commands = ['man', 'help', 'check', "os", "net", "disks", "version", "-v", "clear",
                          "list_logs", "more_log_info", "exit", 'mem', 'cpu', 'get_id']
 
     def __init__(self, cmd=""):
@@ -84,6 +84,8 @@ class CLI:
             "check": self.check,
             "clear": self.clear,
             "os": self.os,
+            "net": self.net,
+            "disks": self.disks,
             "version": self.version,
             "-v": self.version,
             "list_logs": self.list_logs,
@@ -122,13 +124,19 @@ class CLI:
         cli.cpu_info()
 
     def get_id(self):
-        print("get id")
+        print("Current Process ID: " + str(os.getpid()))
 
     def version(self):
         print("v1.0.2")
 
     def os(self):
-        print("os")
+        cli.os_info()
+
+    def net(self):
+        cli.net()
+
+    def disks(self):
+        cli.disks()
 
     def list_logs(self):
         print("list_logs")

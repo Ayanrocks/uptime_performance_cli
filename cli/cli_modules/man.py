@@ -14,6 +14,8 @@ def man():
         "clear": "Clears the cli",
         "check --url, --u (url) --packets, --p (packets)": "Pinging and testing server. Takes url as an optional argument",
         "os": "Shows info about the current os",
+        "net": "Show Network info with each socket",
+        "disks": "Shows Disk and partition info",
         "version, -v": "Shows version of the cli",
         "mem": "Shows available memory on the system",
         "cpu": "Shows info about the cpu",
