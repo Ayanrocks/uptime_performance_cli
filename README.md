@@ -69,7 +69,7 @@ $ python app.py
 ### Thats it!!!
 
 <h1 id="contribution">Contribution</h1>
-If you want to contribute feel free to submit a pr. If you want to use this *cli* in your project then follow the code below:
+If you want to contribute feel free to submit a pr. If you want to use this <em>CLI </em> in your project then follow the code below:
 
 ```python
 # Dependencies
