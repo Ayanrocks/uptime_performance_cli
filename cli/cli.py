@@ -58,6 +58,7 @@ class CLI:
                         cmd = ""
 
                 else:
+                    print("")
                     self.cmd = input("> ")
                     if(self.command_validate()):
                         self.emit_command()
@@ -70,11 +71,11 @@ class CLI:
 
     def command_validate(self):
         cmd = self.cmd.split(" ")
-        if cmd[0] == "":
+        if cmd[0].replace(" ", "") == "":
             return True
         for i in CLI.accepted_commands:
 
-            if cmd[0] == i:
+            if cmd[0].replace(" ", "") == i:
                 return True
 
     def emit_command(self):
@@ -139,11 +140,14 @@ class CLI:
         cli.disks()
 
     def list_logs(self):
-        print("list_logs")
+        cli.list_logs()
 
     def log_info(self):
-        print("log_info")
+        cli.log_info(self.cmd)
 
     def exit(self):
         print("Exiting!!!")
         exit(1)
+
+    def __del__(self):
+        pass

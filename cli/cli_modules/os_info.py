@@ -58,3 +58,4 @@ def os_info():
     ut.vertical_space(2)
 
     display_info()
+    return

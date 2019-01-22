@@ -12,7 +12,7 @@ def man():
         "man": "Show the help page",
         "help": "Same as 'man' command",
         "clear": "Clears the cli",
-        "check --url, --u (url) --packets, --p (packets)": "Pinging and testing server. Takes url as an optional argument",
+        "check --url, --u (url) --packets, --p (packets)": "Pinging and testing server. Takes url and  packet as an optional argument",
         "os": "Shows info about the current os",
         "net": "Show Network info with each socket",
         "disks": "Shows Disk and partition info",
@@ -21,7 +21,7 @@ def man():
         "cpu": "Shows info about the cpu",
         "get_id": "Shows the process id of the current process",
         "list_logs": "shows available logs",
-        "more_log_info --(id)": "Show details of a specified log file",
+        "more_log_info --(id)": "Show details of a specified log file. Logs are stored in YY-MM-DD--HHMMSS format",
         "exit": "Kills the cli"
     }
 
@@ -34,7 +34,7 @@ def man():
         value = "\033[92m" + val + "\033[0m"
         line = "\033[94m" + key + "\033[0m"
         padding = 60 - len(line)
-        val = val[:40] + "\n" + (" " * padding) + val[41:]
+        value = value[:48] + "\n" + (" " * 51) + value[48:]
         while(padding):
             line += " "
             padding -= 1
