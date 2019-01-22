@@ -36,39 +36,54 @@ def validate(url, packets=4):
     else:
         ping(url, packets)
 
+def windows(res_split):
+    print("\n")
+    print("Ping " + res_split[0])
+    print("\n")
+
+    print("Transmission Statistics \n " + res_split[1])
+    print("\n")
+
+    print("Latency: \n" + res_split[2] + "\n" + res_split[3])
+    print("\n")
+
+def linux(res_split):
+    print("\n")
+    print("Ping " + res_split[0].replace(" ", ""))
+    print("\n")
+
+    print("Transmission Statistics \n " + res_split[1])
+    print("\n")
+
+    print("Latency: \n" + res_split[2])
+    print("\n")
 
 def ping(url, packets):
-    # @TODO Fix Ping in windows
     try:
         print("Waiting  for response")
         print("Pinging " + url + " ...")
 
         if pm.system() == "Windows":
-            print("Windows")
             res = subprocess.check_output(
                 "ping -n " + str(packets) + " " + url, shell=True).decode("utf-8")
             res_split = res.split("Ping ")[1].split('\r\n')
             res_split[2].join(res_split[3])
+            windows(res_split)
 
         elif pm.system() == "Linux":
             res = subprocess.check_output(
                 "ping -c " + str(packets) + " " + url, shell=True).decode("utf-8")
             res_split = res.split("ping")[1].split("\n")
+            linux(res_split)
 
         else:
             res = subprocess.check_output(
                 "ping -c " + str(packets) + " " + url, shell=True).decode("utf-8")
             res_split = res.split("ping")[1].split("\n")
+            linux(res_split)
 
-        print("\n")
-        print("Ping " + res_split[0].replace(" ", ""))
-        print("\n")
 
-        print("Transmission Statistics \n " + res_split[1])
-        print("\n")
-
-        print("Latency: \n" + res_split[2])
-        print("\n")
+        
 
         ch = input("Want to save this data to log (y/n): ")
         if ch == 'y' or ch == 'Y':

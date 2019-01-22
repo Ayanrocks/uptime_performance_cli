@@ -21,7 +21,7 @@ def man():
         "cpu": "Shows info about the cpu",
         "get_id": "Shows the process id of the current process",
         "list_logs": "shows available logs",
-        "more_log_info --(id)": "Show details of a specified log file. Logs are stored in YY-MM-DD--HHMMSS format",
+        "more_log_info --(id)": "Show details of a specified log file. Logs are stored in DD-MM-YY--HHMMSS format",
         "exit": "Kills the cli"
     }
 

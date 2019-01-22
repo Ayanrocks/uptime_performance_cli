@@ -20,7 +20,7 @@ def get_logs(log):
     files = [f for f in os.listdir(
         curr_dir) if os.path.isfile(os.path.join(curr_dir, f)) and f.endswith(".log") and log in f]
     if len(files) == 0:
-        print("Print No log file found. Remember log format is YY-MM-DD--HHMMSS")
+        print("Print No log file found. Remember log format is DD-MM-YY--HHMMSS")
 
     elif len(files) > 1:
         print("Multiple Log Entries found. Choose the desired one")
