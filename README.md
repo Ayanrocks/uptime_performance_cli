@@ -1,8 +1,8 @@
-<div style="text-align:center">
+<div align="center">
 <img src="https://user-images.githubusercontent.com/7585388/27636865-e6505c60-5c0d-11e7-92d1-1adc1ac81a11.png" height="100" >
 </div>
 
-<h1 style="text-decoration: none !important; text-align:center;">
+<h1 align="center">
   Uptime Performance CLI
 </h1>
 
